@@ -23,5 +23,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/servicecontainer', [LifeCycleTestController::class, 'showServiceContainer']);
+Route::get('/serviceprovider', [LifeCycleTestController::class, 'showServiceProvider']);
 
 require __DIR__.'/auth.php';
