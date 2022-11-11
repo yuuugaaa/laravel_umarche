@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Owner;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class OwnersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -19,7 +17,9 @@ class OwnersController extends Controller
 
     public function index()
     {
-        dd('オーナー一覧です。');
+        $owners = Owner::select('id', 'name', 'email', 'created_at')->get();
+
+        return view('admin.owners.index', compact('owners'));
     }
 
     /**
@@ -29,7 +29,7 @@ class OwnersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.owners.create');
     }
 
     /**
