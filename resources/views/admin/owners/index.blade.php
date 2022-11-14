@@ -45,6 +45,7 @@
                                     @endforeach
                                 </tbody>
                                 </table>
+                                {{ $owners->links() }}
                             </div>
                             <div class="p-2 w-full flex justify-around mt-10">
                                 <button onclick="location.href='{{ route('admin.owners.create') }}'" class="text-white bg-yellow-500 border-0 py-2 px-12 focus:outline-none hover:bg-yellow-600 rounded text-lg">新規登録</button>
