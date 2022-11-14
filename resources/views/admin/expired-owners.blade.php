@@ -16,21 +16,21 @@
                                 <table class="table-auto w-full text-left whitespace-no-wrap">
                                 <thead>
                                     <tr>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">オーナーID</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">オーナー名</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">削除日時</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
-                                    <th class="px-2 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">オーナーID</th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">オーナー名</th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">削除日時</th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
+                                    <th class="md:px-2 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($expiredOwners as $owner)
                                     <tr>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->id }}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->name }}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->email }}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->deleted_at->diffForHumans() }}</td>
+                                    <td class="border-t-2 border-gray-200 md:px-4 py-3">{{ $owner->id }}</td>
+                                    <td class="border-t-2 border-gray-200 md:px-4 py-3">{{ $owner->name }}</td>
+                                    <td class="border-t-2 border-gray-200 md:px-4 py-3">{{ $owner->email }}</td>
+                                    <td class="border-t-2 border-gray-200 md:px-4 py-3">{{ $owner->deleted_at->diffForHumans() }}</td>
                                     <form method="post" action="{{ route('admin.expired-owners.restore', ['owner' => $owner->id]) }}">
                                         @csrf
                                         @method('patch')
@@ -48,6 +48,7 @@
                                     @endforeach
                                 </tbody>
                                 </table>
+                                {{ $expiredOwners->links() }}
                             </div>
                         </div>
                     </section>

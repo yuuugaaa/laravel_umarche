@@ -16,22 +16,22 @@
                                 <table class="table-auto w-full text-left whitespace-no-wrap">
                                 <thead>
                                     <tr>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">オーナーID</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">オーナー名</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日時</th>
-                                    <th class="px-2 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
-                                    <th class="px-2 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">オーナーID</th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">オーナー名</th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
+                                    <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日時</th>
+                                    <th class="md:px-2 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
+                                    <th class="md:px-2 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($owners as $owner)
                                     <tr>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->id }}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->name }}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->email }}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->created_at->diffForHumans() }}</td>
-                                    <td class="border-t-2 border-gray-200 px-2 py-3">
+                                    <td class="border-t-2 border-gray-200 md:px-4 py-3">{{ $owner->id }}</td>
+                                    <td class="border-t-2 border-gray-200 md:px-4 py-3">{{ $owner->name }}</td>
+                                    <td class="border-t-2 border-gray-200 md:px-4 py-3">{{ $owner->email }}</td>
+                                    <td class="border-t-2 border-gray-200 md:px-4 py-3">{{ $owner->created_at->diffForHumans() }}</td>
+                                    <td class="border-t-2 border-gray-200 md:px-2 py-3">
                                         <button onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'" class="text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded flex ml-auto w-fit">編集</button>
                                     </td>
                                     <form id="delete_{{ $owner->id }}" method="post" action="{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}">

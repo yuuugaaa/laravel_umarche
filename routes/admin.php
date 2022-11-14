@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.welcome');
-});
+//Route::get('/', function () {
+//    return view('admin.welcome');
+//});
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -55,7 +55,8 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth:admin')->group(function () {
-    Route::resource('owners', OwnersController::class);
+    Route::resource('owners', OwnersController::class)
+                ->except('show');
 
     Route::prefix('expired-owners')
                 ->group(function () {
