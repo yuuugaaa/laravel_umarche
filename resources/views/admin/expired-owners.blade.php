@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            オーナー【一覧】
+            削除済オーナー【一覧】
         </h2>
     </x-slot>
 
@@ -19,24 +19,27 @@
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">オーナーID</th>
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">オーナー名</th>
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
-                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日時</th>
-                                    <th class="px-2 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
+                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">削除日時</th>
+                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
                                     <th class="px-2 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($owners as $owner)
+                                    @foreach ($expiredOwners as $owner)
                                     <tr>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->id }}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->name }}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->email }}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->created_at->diffForHumans() }}</td>
-                                    <td class="border-t-2 border-gray-200 px-2 py-3">
-                                        <button onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'" class="text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded flex ml-auto w-fit">編集</button>
-                                    </td>
-                                    <form id="delete_{{ $owner->id }}" method="post" action="{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}">
+                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{ $owner->deleted_at->diffForHumans() }}</td>
+                                    <form method="post" action="{{ route('admin.expired-owners.restore', ['owner' => $owner->id]) }}">
                                         @csrf
-                                        @method('delete')
+                                        @method('patch')
+                                        <td class="border-t-2 border-gray-200 px-2 py-3">
+                                            <button type="submit" class="text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded flex ml-auto w-fit">復元</button>
+                                        </td>
+                                    </form>
+                                    <form id="delete_{{ $owner->id }}" method="post" action="{{ route('admin.expired-owners.destroy', ['owner' => $owner->id]) }}">
+                                        @csrf
                                         <td class="border-t-2 border-gray-200 px-2 py-3">
                                             <a href="#" data-id="{{ $owner->id }}" onclick="deletePost(this)" class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded flex ml-auto w-fit">削除</a>
                                         </td>
@@ -45,9 +48,6 @@
                                     @endforeach
                                 </tbody>
                                 </table>
-                            </div>
-                            <div class="p-2 w-full flex justify-around mt-10">
-                                <button onclick="location.href='{{ route('admin.owners.create') }}'" class="text-white bg-yellow-500 border-0 py-2 px-12 focus:outline-none hover:bg-yellow-600 rounded text-lg">新規登録</button>
                             </div>
                         </div>
                     </section>
@@ -58,7 +58,7 @@
     <script>
         function deletePost(e) {
             'use strict';
-            if (confirm('本当に削除してもよろしいですか？')) {
+            if (confirm('OKを押すと完全に削除されます。本当に削除してもよろしいですか？')) {
                 document.getElementById('delete_' + e.dataset.id).submit();
             }
         }

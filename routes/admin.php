@@ -57,6 +57,16 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth:admin')->group(function () {
     Route::resource('owners', OwnersController::class);
 
+    Route::prefix('expired-owners')
+                ->group(function () {
+                    Route::get('index', [OwnersController::class, 'expiredOwnerIndex'])
+                                ->name('expired-owners.index');
+                    Route::patch('restore/{owner}', [OwnersController::class, 'expiredOwnerRestore'])
+                                ->name('expired-owners.restore');
+                    Route::post('destroy/{owner}', [OwnersController::class, 'expiredOwnerDestroy'])
+                                ->name('expired-owners.destroy');
+                });
+
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
 
