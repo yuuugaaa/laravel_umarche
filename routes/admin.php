@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('admin.welcome');
-//});
+Route::get('/', function () {
+    return view('admin.welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
@@ -60,7 +60,7 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::prefix('expired-owners')
                 ->group(function () {
-                    Route::get('index', [OwnersController::class, 'expiredOwnerIndex'])
+                    Route::get('/', [OwnersController::class, 'expiredOwnerIndex'])
                                 ->name('expired-owners.index');
                     Route::patch('restore/{owner}', [OwnersController::class, 'expiredOwnerRestore'])
                                 ->name('expired-owners.restore');
