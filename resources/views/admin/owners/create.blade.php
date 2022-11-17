@@ -15,7 +15,7 @@
                                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">オーナー登録</h1>
                             </div>
                             <div class="lg:w-1/2 md:w-2/3 mx-auto">
-                                <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                                <x-auth-validation-errors class="mb-4 w-4/5 mx-auto" :errors="$errors" />
                                 <form method="post" action="{{ route('admin.owners.store') }}">
                                     @csrf
                                 <div class="-m-2">

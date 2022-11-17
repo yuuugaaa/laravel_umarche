@@ -14,6 +14,7 @@
                             <div class="flex flex-col text-center w-full mb-12">
                                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">店舗情報編集</h1>
                             </div>
+                            <x-auth-validation-errors class="mb-4 w-4/5 mx-auto" :errors="$errors" />
                             <form method="post" action="{{ route('owner.shops.update', ['shop' => $shop->id]) }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="-m-2">
