@@ -19,7 +19,7 @@
                                 @csrf
                                 <div class="-m-2">
                                     <div class="p-2 w-4/5 md:w-1/2 mx-auto">
-                                        <x-shop-thumbnail :filename="$shop->filename" />
+                                        <x-thumbnail :filename="$shop->filename" type="shops" />
                                     </div>
                                     <div class="p-2 w-4/5 mx-auto">
                                         <div class="relative">
