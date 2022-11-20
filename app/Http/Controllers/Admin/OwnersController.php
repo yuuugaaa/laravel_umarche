@@ -63,7 +63,7 @@ class OwnersController extends Controller
                     'name' => 'default',
                     'information' => '',
                     'filename' => '',
-                    'is_selling' => true,
+                    'is_selling' => false,
                 ]);
             }, 2);
         } catch(Throwable $e) {
