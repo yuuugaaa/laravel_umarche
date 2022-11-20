@@ -14,11 +14,11 @@
                             <x-flash-message status="session('status')" />
                             <div class="flex flex-wrap -m-4">
                             @foreach ($images as $image)
-                                <div class="p-4 md:w-1/4">
+                                <div class="p-2 md:p-4 w-1/2 sm:w-1/3 md:w-1/4">
                                 <a href="{{ route('owner.images.edit', ['image' => $image->id]) }}" class="block h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                                     <x-thumbnail :filename="$image->filename" type="products" />
-                                    <div class="p-4">
-                                        <h3 class="title-font text-lg font-medium text-gray-900 mb-3">{{ $image->title }}</h3>
+                                    <div class="p-2">
+                                        <p class="leading-relaxed break-words">{{ $image->title }}</p>
                                     </div>
                                 </a>
                                 </div>

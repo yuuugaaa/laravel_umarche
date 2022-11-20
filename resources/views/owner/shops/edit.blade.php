@@ -33,7 +33,6 @@
                                         <div class="mr-4"><input type="radio" name="is_selling" value="0" @if ($shop->is_selling === 0) { checked } @endif class="mr-2">停止中</div>
                                         </div>
                                     </div>
-
                                     <div class="p-2 w-4/5 mx-auto">
                                         <div class="relative">
                                         <label for="name" class="leading-7 text-sm text-gray-600">店名</label>
