@@ -22,8 +22,11 @@
                     <x-nav-link :href="route('owner.shops.index')" :active="request()->routeIs('owner.shops.*')">
                         店舗
                     </x-nav-link>
+                    <x-nav-link :href="route('owner.products.index')" :active="request()->routeIs('owner.products.*')">
+                        商品
+                    </x-nav-link>
                     <x-nav-link :href="route('owner.images.index')" :active="request()->routeIs('owner.images.*')">
-                        画像管理
+                        画像
                     </x-nav-link>
                 </div>
             </div>
@@ -79,8 +82,11 @@
             <x-responsive-nav-link :href="route('owner.shops.index')" :active="request()->routeIs('owner.shops.*')">
                 店舗
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('owner.products.index')" :active="request()->routeIs('owner.products.*')">
+                商品
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('owner.images.index')" :active="request()->routeIs('owner.images.*')">
-                画像管理
+                画像
             </x-responsive-nav-link>
         </div>
 
