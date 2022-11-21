@@ -1230,6 +1230,9 @@ select {
 .pb-0 {
   padding-bottom: 0px;
 }
+.pt-12 {
+  padding-top: 3rem;
+}
 .text-left {
   text-align: left;
 }
