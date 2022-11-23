@@ -34,7 +34,7 @@
             </div>
         </main>
         <footer class="modal__footer">
-            <button type="button" class="modal__btn" data-micromodal-close aria-label="閉じる">閉じる</button>
+            <button type="button" id="{{ $modal }}_close" class="modal__btn" data-micromodal-close aria-label="閉じる">閉じる</button>
         </footer>
     </div>
     </div>
