@@ -15,9 +15,9 @@
                             <div class="flex flex-wrap -m-4">
                             @foreach ($ownerInfo as $owner)
                             @foreach ($owner->shop->product as $product)
-                                <div class="p-2 md:p-4 w-1/2 sm:w-1/3 md:w-1/4">
+                                <div class="p-2 md:p-4 w-1/2 md:w-1/3">
                                 <a href="{{ route('owner.products.edit', ['product' => $product->id]) }}" class="block h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                                    <x-thumbnail :filename="$product->imageFirst->filename" type="products" />
+                                    <x-thumbnail filename="{{ $product->imageFirst->filename ?? '' }}" type="products" />
                                     <div class="p-2">
                                         <p class="leading-relaxed break-words">{{ $product->name }}</p>
                                     </div>
