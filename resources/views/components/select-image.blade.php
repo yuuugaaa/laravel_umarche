@@ -3,6 +3,9 @@
     if ($name === 'image2') { $modal = 'modal-2'; }
     if ($name === 'image3') { $modal = 'modal-3'; }
     if ($name === 'image4') { $modal = 'modal-4'; }
+
+    $cId = $currentId ?? '';
+    $cImage = $currentImage ?? '';
 @endphp
 
 <div class="modal micromodal-slide" id="{{ $modal }}" aria-hidden="true">
@@ -43,7 +46,9 @@
 <div class="p-2 w-full md:w-1/2">
     <label for="{{ $name }}" class="leading-7 text-sm text-gray-600">{{ $title }}</label>
     <a data-micromodal-trigger="{{ $modal }}" href='javascript:;' class="block w-full">
-        <img id="{{ $name }}_thumbnail" src="{{ asset('images/no_image.jpg') }}" class="h-auto aspect-video object-cover object-center">
+        <img id="{{ $name }}_thumbnail" class="h-auto aspect-video object-cover object-center"
+            @if ($cImage) src="{{ asset('storage/products/'. $cImage) }}"
+            @else src="{{ asset('images/no_image.jpg') }}" @endif>
     </a>
-    <input type="hidden" id="{{ $name }}_hidden" name="{{ $name }}" value="">
+    <input type="hidden" id="{{ $name }}_hidden" name="{{ $name }}" value="{{ $cId }}">
 </div>

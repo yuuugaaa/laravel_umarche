@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="p-2 w-full flex justify-around mt-12">
                                         <button type="button" onclick="location.href='{{ route('owner.shops.index') }}'" class="text-white bg-gray-400 border-0 py-2 px-12 focus:outline-none hover:bg-gray-500 rounded text-lg">戻る</button>
-                                        <button type="submit" class="text-white bg-yellow-500 border-0 py-2 px-12 focus:outline-none hover:bg-yellow-600 rounded text-lg">更新</button>
+                                        <button type="submit" class="text-white bg-green-500 border-0 py-2 px-12 focus:outline-none hover:bg-green-600 rounded text-lg">更新</button>
                                     </div>
                                 </div>
                             </form>
