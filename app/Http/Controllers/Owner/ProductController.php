@@ -82,7 +82,6 @@ class ProductController extends Controller
                     'name' => $request->name,
                     'information' => $request->information,
                     'price' => $request->price,
-                    'quantity' => $request->quantity,
                     'shop_id' => $request->shop_id,
                     'secondary_category_id' => $request->category,
                     'sort_order' => $request->sort_order,
@@ -170,7 +169,6 @@ class ProductController extends Controller
                     $product->name = $request->name;
                     $product->information = $request->information;
                     $product->price = $request->price;
-                    $product->quantity = $request->quantity;
                     $product->shop_id = $request->shop_id;
                     $product->secondary_category_id = $request->category;
                     $product->sort_order = $request->sort_order;
@@ -181,10 +179,10 @@ class ProductController extends Controller
                     $product->is_selling = $request->is_selling;
                     $product->save();
     
-                    if ($request->type === '1') {
+                    if ($request->type === \Constant::PRODUCT_LIST['add']) {
                         $newQuantity = $request->quantity;
                     }
-                    if ($request->type === '2') {
+                    if ($request->type === \Constant::PRODUCT_LIST['reduce']) {
                         $newQuantity = $request->quantity * -1;                 
                     }
 
