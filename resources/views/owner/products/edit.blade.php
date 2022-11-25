@@ -11,12 +11,14 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <section class="text-gray-600 body-font relative">
                         <div class="container px-5 py-4 mx-auto">
+                            <x-flash-message status="session('status')" />
                             <div class="flex flex-col text-center w-full mb-12">
                                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">商品情報</h1>
                             </div>
                             <x-auth-validation-errors class="mb-4 w-4/5 mx-auto" :errors="$errors" />
                             <form method="post" action="{{ route('owner.products.update', ['product' => $product->id]) }}">
                                 @csrf
+                                @method('put')
                                 <div class="-m-2">
                                     <div class="p-2 w-4/5 mx-auto">
                                         <div class="relative">
