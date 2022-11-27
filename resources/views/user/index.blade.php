@@ -15,10 +15,10 @@
                         @foreach ($products as $product)
                             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
                             <a class="block relative h-48 rounded overflow-hidden">
-                                <x-thumbnail :filename="$product->imageFirst->filename" type="products" />
+                                <x-thumbnail :filename="$product->filename" type="products" />
                             </a>
                             <div class="mt-4">
-                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category->name }}</h3>
+                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category }}</h3>
                                 <h2 class="text-gray-900 title-font text-lg font-medium">{{ $product->name }}</h2>
                                 <p class="mt-1">¥ {{ number_format($product->price) }}</p>
                             </div>
