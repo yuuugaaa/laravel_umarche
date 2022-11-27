@@ -10,20 +10,21 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <section class="text-gray-600 body-font">
-                        <div class="container px-5 py-4 mx-auto">
-                            <x-flash-message status="session('status')" />
-                            <div class="flex flex-wrap -m-4">
-                            @foreach ($products as $product)
-                                <div class="p-2 md:p-4 w-1/2 md:w-1/3">
-                                <a href="" class="block h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                                    <x-thumbnail filename="{{ $product->imageFirst->filename ?? '' }}" type="products" />
-                                    <div class="p-2">
-                                        <p class="leading-relaxed break-words">{{ $product->name }}</p>
-                                    </div>
-                                </a>
-                                </div>
-                            @endforeach
+                        <div class="container px-5 py-24 mx-auto">
+                        <div class="flex flex-wrap -m-4">
+                        @foreach ($products as $product)
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+                            <a class="block relative h-48 rounded overflow-hidden">
+                                <x-thumbnail :filename="$product->imageFirst->filename" type="products" />
+                            </a>
+                            <div class="mt-4">
+                                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category->name }}</h3>
+                                <h2 class="text-gray-900 title-font text-lg font-medium">{{ $product->name }}</h2>
+                                <p class="mt-1">¥ {{ number_format($product->price) }}</p>
                             </div>
+                            </div>
+                        @endforeach
+                        </div>
                         </div>
                     </section>
                 </div>
