@@ -10,10 +10,37 @@
             <div class="bg-white overflow-hidden shadow-sm md:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <section class="text-gray-600 body-font overflow-hidden">
-                        <div class="container py-24 mx-auto">
+                        <div class="container py-4 mx-auto">
                         <div class="md:w-4/5 mx-auto flex flex-wrap items-center">
                             <div class="md:w-1/2 w-full md:h-auto h-64 object-cover object-center rounded p-4">
-                                <x-thumbnail :filename="$product->imageFirst->filename" type="products" />
+                                <!-- Slider main container -->
+                                <div class="swiper">
+                                    <!-- Additional required wrapper -->
+                                    <div class="swiper-wrapper">
+                                    <!-- Slides -->
+                                    @if ($product->imageFirst->filename !== null)
+                                    <div class="swiper-slide"><img src="{{ asset('storage/products/'). '/'. $product->imageFirst->filename }}" alt=""></div>
+                                    @endif
+                                    @if ($product->imageSecond->filename !== null)
+                                    <div class="swiper-slide"><img src="{{ asset('storage/products/'). '/'. $product->imageSecond->filename }}" alt=""></div>
+                                    @endif
+                                    @if ($product->imageThird->filename !== null)
+                                    <div class="swiper-slide"><img src="{{ asset('storage/products/'). '/'. $product->imageThird->filename }}" alt=""></div>
+                                    @endif
+                                    @if ($product->imageFourth->filename !== null)
+                                    <div class="swiper-slide"><img src="{{ asset('storage/products/'). '/'. $product->imageFourth->filename }}" alt=""></div>
+                                    @endif
+                                    </div>
+                                    <!-- If we need pagination -->
+                                    <div class="swiper-pagination"></div>
+                                
+                                    <!-- If we need navigation buttons -->
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                
+                                    <!-- If we need scrollbar -->
+                                    <div class="swiper-scrollbar"></div>
+                                </div>
                             </div>
                             <div class="md:w-1/2 w-full">
                                 <div class="p-4">
@@ -44,4 +71,5 @@
             </div>
         </div>
     </div>
+    <script src="{{ mix('js/swiper.js') }}"></script>
 </x-app-layout>
