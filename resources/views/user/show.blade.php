@@ -65,10 +65,41 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="border-t-2 border-gray-200 md:w-4/5 mx-auto p-4 text-center">
+                            <p class="leading-relaxed mb-2">この商品を販売しているショップ</p>
+                            <div class="md:w-1/3 mx-auto">
+                            <a data-micromodal-trigger="modal-1" href='javascript:;' class="block h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                                @if ($product->shop->filename !== null)
+                                <x-thumbnail :filename="$product->shop->filename" type="shops" />
+                                @endif
+                                <div class="p-2">
+                                    <h3 class="title-font text-lg font-medium text-gray-900">{{ $product->shop->name }}</h3>
+                                </div>
+                            </a>
+                            </div>
+                        </div>
                         </div>
                     </section>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+        <div class="modal__overlay z-50" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <header class="modal__header">
+            <h2 class="text-xl font-medium text-gray-900" id="modal-1-title">
+                {{ $product->shop->name }}
+            </h2>
+            <button type="button" class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="modal-1-content">
+            <p>{{ $product->shop->information }}</p>
+            </main>
+            <footer class="modal__footer">
+            <button type="button" class="modal__btn" data-micromodal-close aria-label="Close this dialog window">閉じる</button>
+            </footer>
+        </div>
         </div>
     </div>
     <script src="{{ mix('js/swiper.js') }}"></script>
