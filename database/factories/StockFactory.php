@@ -16,7 +16,7 @@ class StockFactory extends Factory
     {
         return [
             'product_id' => Product::factory(),
-            'type' => $this->faker->numberBetween(1, 2),
+            'type' => 1,
             'quantity' => $this->faker->randomNumber,
         ];
     }

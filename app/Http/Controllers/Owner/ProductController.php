@@ -183,7 +183,7 @@ class ProductController extends Controller
                         $newQuantity = $request->quantity;
                     }
                     if ($request->type === \Constant::PRODUCT_LIST['reduce']) {
-                        $newQuantity = $request->quantity * -1;                 
+                        $newQuantity = $request->quantity * -1;
                     }
 
                     Stock::create([
