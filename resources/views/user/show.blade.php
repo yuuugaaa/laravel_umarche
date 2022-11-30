@@ -48,20 +48,25 @@
                                     <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ $product->name }}</h1>
                                     <p class="leading-relaxed">{{ $product->information }}</p>
                                 </div>
+                                <form method="post" action="{{ route('user.cart.add') }}">
                                 <div class="flex justify-between items-center p-4">
                                     <span class="title-font font-medium text-2xl text-gray-900">¥ {{ number_format($product->price) }}</span>
-                                    <div class="flex items-center">
-                                        <span class="mr-2">数量</span>
-                                        <div class="relative">
-                                            <select name="quantity" class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-200 focus:border-yellow-500 text-base pl-3 pr-10">
-                                            @for ($i=1; $i<=$quantity; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>    
-                                            @endfor
-                                            </select>
+                                    
+                                        @csrf
+                                        <div class="flex items-center">
+                                            <span class="mr-2">数量</span>
+                                            <div class="relative">
+                                                <select name="quantity" class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-200 focus:border-yellow-500 text-base pl-3 pr-10">
+                                                @for ($i=1; $i<=$quantity; $i++)
+                                                <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <button class="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">カートに入れる</button>
+                                        <button class="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">カートに入れる</button>
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 </div>
+                                </form>
                             </div>
                         </div>
                         <div class="border-t-2 border-gray-200 md:w-4/5 mx-auto p-4 text-center">
