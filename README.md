@@ -16,7 +16,7 @@ GitHub内の「Code」->「Download ZIP」よりダウンロードしてくだ�
 ③npm install<br>
 ④npm run dev<br>
 
-・.env.exampleをコピーして.envファイルを作成し、
+.env.exampleをコピーして.envファイルを作成し、
 下記をご利用の環境に合わせて変更してください。
 <ul>
     <li>DB_CONNECTION=mysql</li>
@@ -27,11 +27,11 @@ GitHub内の「Code」->「Download ZIP」よりダウンロードしてくだ�
     <li>DB_PASSWORD=umarchepass</li>
 </ul>
 
-・XAMPP/MAMPまたは他の開発環境でDBを起動した後に<br>
+XAMPP/MAMPまたは他の開発環境でDBを起動した後に<br>
 php artisan migrate:fresh --seed
 と実行してください。(データベーステーブルとダミーデータが追加されればOK)
 
-・最後に php artisan key:generate と入力してキーを生成後、<br>
+最後に php artisan key:generate と入力してキーを生成後、<br>
 php artisan serve で簡易サーバーを立ち上げ、表示確認してください。
 
 ## インストール後の実施事項
