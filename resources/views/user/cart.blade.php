@@ -43,9 +43,13 @@
                                 </div>
                             </div>
                             @endforeach
-                            <div class="flex justify-end items-center p-4">
-                                <p class="text-xl font-medium text-gray-500">合計：</p>
-                                <p class="text-2xl font-bold text-yellow-500">¥ {{ number_format($totalPrice) }}</p>
+                            <div class="flex md:justify-end justify-center items-center flex-wrap p-4">
+                                <div class="p-2">
+                                    <p class="text-2xl font-bold text-yellow-500"><span class="text-xl font-medium text-gray-500">小計：</span>¥ {{ number_format($totalPrice) }}</p>
+                                </div>
+                                <div class="p-2">
+                                    <button onclick="location.href='{{ route('user.cart.checkout') }}'" class="text-white bg-green-500 border-0 py-2 px-12 focus:outline-none hover:bg-green-600 rounded text-lg">購入</button>
+                                </div>
                             </div>
                         </div>
                     </section>
