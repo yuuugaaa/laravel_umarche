@@ -1,8 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Home
-        </h2>
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Home
+            </h2>
+            <div>
+                <form method="get" action="{{ route('user.items.index') }}">
+                    <div class="mr-2 text-gray-800">
+                        <span class="text-sm mr-2">表示順</span>
+                        <select id="sort" name="sort" class="border-gray-400">
+                            <option value="{{ \Constant::SORT_ORDER['recommend'] }}" @if (\Request::get('sort') === \Constant::SORT_ORDER['recommend']) selected @endif>おすすめ順</option>
+                            <option value="{{ \Constant::SORT_ORDER['higherPrice'] }}" @if (\Request::get('sort') === \Constant::SORT_ORDER['higherPrice']) selected @endif>価格の高い順</option>
+                            <option value="{{ \Constant::SORT_ORDER['lowerPrice'] }}" @if (\Request::get('sort') === \Constant::SORT_ORDER['lowerPrice']) selected @endif>価格の低い順</option>
+                            <option value="{{ \Constant::SORT_ORDER['later'] }}" @if (\Request::get('sort') === \Constant::SORT_ORDER['later']) selected @endif>新しい順</option>
+                            <option value="{{ \Constant::SORT_ORDER['older'] }}" @if (\Request::get('sort') === \Constant::SORT_ORDER['older']) selected @endif>古い順</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -31,4 +47,10 @@
             </div>
         </div>
     </div>
+    <script>
+        const select = document.getElementById('sort')
+        select.addEventListener('change', function() {
+            this.form.submit()
+        })
+    </script>
 </x-app-layout>

@@ -89,6 +89,24 @@ class Product extends Model
         ->select('products.id as id', 'products.name as name', 'products.price',
             'products.sort_order as sort_order', 'products.information',
             'secondary_categories.name as category', 'image1.filename as filename');
+    }
 
+    public function scopeSortOrder($query, $sortOrder)
+    {
+        if (is_null($sortOrder) || $sortOrder === \Constant::SORT_ORDER['recommend']) {
+            return $query->orderby('sort_order', 'asc');
+        }
+        if ($sortOrder === \Constant::SORT_ORDER['higherPrice']) {
+            return $query->orderby('price', 'desc');
+        }
+        if ($sortOrder === \Constant::SORT_ORDER['lowerPrice']) {
+            return $query->orderby('price', 'asc');
+        }
+        if ($sortOrder === \Constant::SORT_ORDER['later']) {
+            return $query->orderby('products.created_at', 'desc');
+        }
+        if ($sortOrder === \Constant::SORT_ORDER['older']) {
+            return $query->orderby('products.created_at', 'asc');
+        }
     }
 }
