@@ -10,7 +10,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <form method="get" action="{{ route('user.items.index') }}" class="flex justify-between items-center py-6">
             <div class="mr-4 text-gray-800 flex">
-                <input name="keywords" placeholder="キーワードを入力" class="p-2" value="{{ \Request::get('keywords') }}">
+                <input name="keyword" placeholder="キーワードを入力" class="p-2" value="{{ \Request::get('keyword') }}">
                 <button type="submit" class="text-white bg-yellow-500 border-0 py-2 px-12 focus:outline-none hover:bg-yellow-600 rounded text-lg">検索</button>
             </div>
             <div class="flex justify-end items-center">
