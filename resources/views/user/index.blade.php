@@ -4,7 +4,29 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Home
             </h2>
-            <form method="get" action="{{ route('user.items.index') }}" class="flex">
+        </div>
+    </x-slot>
+
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <form method="get" action="{{ route('user.items.index') }}" class="flex justify-between items-center py-6">
+            <div class="mr-4 text-gray-800 flex">
+                <input name="keywords" placeholder="キーワードを入力" class="p-2" value="{{ \Request::get('keywords') }}">
+                <button type="submit" class="text-white bg-yellow-500 border-0 py-2 px-12 focus:outline-none hover:bg-yellow-600 rounded text-lg">検索</button>
+            </div>
+            <div class="flex justify-end items-center">
+                <div class="mr-4 text-gray-800">
+                    <span class="leading-7 text-sm text-gray-600 mr-1">カテゴリ</span>
+                    <select id="category" name="category" class="border-gray-400">
+                        <option value="0" @if (\Request::get('category') == '0') selected @endif>全て</option>
+                        @foreach ($categories as $category)
+                            <optgroup label="{{ $category->name }}">
+                            @foreach ($category->secondary as $secondary)
+                                <option value="{{ $secondary->id }}" @if (\Request::get('category') == $secondary->id) selected @endif>{{ $secondary->name }}</option>
+                            @endforeach
+                            </optgroup>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="mr-4 text-gray-800">
                     <span class="leading-7 text-sm text-gray-600 mr-1">表示順</span>
                     <select id="sort" name="sort" class="border-gray-400">
@@ -23,11 +45,12 @@
                         <option value="100" @if (\Request::get('pagination') === '100') selected @endif>100件</option>
                     </select>
                 </div>
-            </form>
-        </div>
-    </x-slot>
+            </div>
+        </form>
+    </div>
+    
 
-    <div class="py-12">
+    <div class="pb-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -59,6 +82,10 @@
         </div>
     </div>
     <script>
+        const category = document.getElementById('category')
+        category.addEventListener('change', function() {
+            this.form.submit()
+        })
         const select = document.getElementById('sort')
         select.addEventListener('change', function() {
             this.form.submit()
