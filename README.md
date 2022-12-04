@@ -53,3 +53,16 @@ storage/app/images/shopsフォルダ内に、<br>
 保存してください。
 
 ※products, shopsフォルダがない場合は作成して下さい。
+
+### Stripe設定
+
+決済のテストとしてStripeを利用しています。<br>
+必要に応じて .envファイルにStripeの情報を追記してください。
+
+### Mailtrapの設定
+
+メールのテストとしてMailtrapを利用しています。<br>
+必要に応じて .envファイルにMailtrapの情報を追記してください。
+
+メール処理に時間がかかるため、キューを使用しています。<br>
+必要に応じて php artisan queue:work でワーカーを立ち上げて、動作確認するようお願いします。
