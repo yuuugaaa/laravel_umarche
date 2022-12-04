@@ -30,8 +30,6 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
-        SendThanksMail::dispatch();
-
         $categories = PrimaryCategory::with('secondary')
         ->get();
 
